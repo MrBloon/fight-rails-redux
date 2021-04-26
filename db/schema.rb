@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_074131) do
+ActiveRecord::Schema.define(version: 2021_04_26_084916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "equipment", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fight_equipments", force: :cascade do |t|
+    t.bigint "equipment_id", null: false
+    t.bigint "fight_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_id"], name: "index_fight_equipments_on_equipment_id"
+    t.index ["fight_id"], name: "index_fight_equipments_on_fight_id"
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hero_fights", force: :cascade do |t|
+    t.bigint "fight_id", null: false
+    t.bigint "hero_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fight_id"], name: "index_hero_fights_on_fight_id"
+    t.index ["hero_id"], name: "index_hero_fights_on_hero_id"
+  end
+
+  create_table "heros", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.integer "hit_points", default: 10
+    t.boolean "foe", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_heros_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +66,9 @@ ActiveRecord::Schema.define(version: 2021_04_26_074131) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fight_equipments", "equipment"
+  add_foreign_key "fight_equipments", "fights"
+  add_foreign_key "hero_fights", "fights"
+  add_foreign_key "hero_fights", "heros"
+  add_foreign_key "heros", "users"
 end
