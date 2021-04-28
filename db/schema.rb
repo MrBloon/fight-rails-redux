@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_084916) do
+ActiveRecord::Schema.define(version: 2021_04_27_073711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_084916) do
     t.boolean "foe", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "level", default: 1
+    t.string "hero_class"
     t.index ["user_id"], name: "index_heros_on_user_id"
   end
 
