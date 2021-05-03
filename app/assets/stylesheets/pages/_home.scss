@@ -1,1 +1,139 @@
-// Specific CSS for your home-page
+:root {
+/*   --highlight: #080; */
+  --highlight: #e01;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #f9f7ec;
+  margin: 0;
+  padding: 0;
+}
+
+// body {
+//   color: #2c2c20;
+//   font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+//   font-size: 16px;
+//   font-weight: 500;
+//   height: 100%;
+//   line-height: 24px;
+//   margin: 0;
+//   padding: 0;
+// }
+
+b {
+  font-weight: 700;
+}
+
+.Wrapper {
+  background-image: linear-gradient(to bottom, rgba(249, 247, 236, 0) 120px, rgba(249, 247, 236, 1) 100%), url("https://cl.ly/pyMI/Sorcerer_PHB5e.png");
+  background-position: top center;
+  background-size: 100% 100%, cover;
+  margin: 0 auto;
+  height: 100%;
+  left: 0;
+  max-width: 560px;
+  overflow-y: scroll;
+  padding: 12px;
+  position: fixed;
+  right: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Card {
+  background-color: rgba(252, 251, 248, 0.9);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(44, 44, 32, .2);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  padding: 16px;
+}
+
+.Card--negative {
+  background-color: rgba(28, 28, 16, 0.9);
+  color: #fcfbf8;
+}
+
+.Character {
+  display: flex;
+  flex-direction: column;
+  padding-top: 160px;
+}
+
+.Character-name {
+  color: var(--highlight);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.Character-details {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 4fr 2fr;
+  line-height: 20px;
+  width: 100%;
+}
+
+.Character-sectionName {
+  color: var(--highlight);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.Character-sectionName:not(:first-child) {
+  margin-top: 24px;
+}
+
+.Character-baseStats {
+  border-bottom: 1px solid rgba(44, 44, 32, .1);
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 24px;
+}
+
+.Character-baseStats-stat > b {
+  font-size: 24px;
+}
+
+.Character-skills {
+  border-bottom: 1px solid rgba(44, 44, 32, .1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.Character-skills-skill {
+  background-color: rgba(44, 44, 32, .02);
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  position: relative;
+  width: 100%;
+}
+
+.Character-skills-skill:nth-child(even) {
+  background-color: rgba(44, 44, 32, .04);
+}
+
+.Character-skills-skill:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.Character-skills-skill:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.is-prof {
+  font-weight: 700;
+}

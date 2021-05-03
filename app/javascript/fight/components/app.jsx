@@ -6,10 +6,10 @@ import ComputerCard from '../containers/card_computer'
 import ActionList from '../containers/action_list'
 
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="app">
-      <Result />
+      <Result fightFromParams={props.match.params.fight}/>
       <PlayerCard />
       <ComputerCard />
       <ActionList />

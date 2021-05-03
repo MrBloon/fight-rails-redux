@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchFight } from '../actions/index';
 
 class ComputerCard extends Component {
   render () {

@@ -6,6 +6,7 @@ export const SET_ROUND_RESULT = 'SET_ROUND_RESULT';
 export const SET_FINAL_RESULT = 'SET_FINAL_RESULT';
 export const RESET_STATE = 'RESET_STATE';
 export const UPDATE_PLAYER_HP = 'UPDATE_PLAYER_HP';
+export const UPDATE_PLAYER_EXPERIENCE = 'UPDATE_PLAYER_EXPERIENCE';
 export const UPDATE_COMPUTER_HP = 'UPDATE_COMPUTER_HP';
 export const UPDATE_USES = 'UPDATE_USES';
 export const SET_SELECTED_SPECIAL = 'SET_SELECTED_SPECIAL';
@@ -70,4 +71,27 @@ export function setFinalResult(finalResult) {
     type: SET_FINAL_RESULT,
     payload: finalResult
   };
+}
+
+export function updatePlayerExperience(newExperience, fightId) {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+
+  const body = {newExperience};
+
+  const request = fetch(`${BASE_URL}/fights/${fightId}`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify(body)
+  }).then(response => response.json())
+
+  return {
+    type: UPDATE_PLAYER_EXPERIENCE,
+    payload: request
+  };
+
 }

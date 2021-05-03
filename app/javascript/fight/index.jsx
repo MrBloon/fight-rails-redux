@@ -6,6 +6,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 import Modal from 'react-modal';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // internal modules
 import App from './components/app';
@@ -24,7 +25,7 @@ import finalResultReducer from './reducers/final_result_reducer';
 const identityReducer = (state = null) => state;
 
 
-const fight = document.getElementById('root');
+const fight = document.getElementById('fight');
 const hero = JSON.parse(fight.dataset.hero);
 const computer = JSON.parse(fight.dataset.foe);
 
@@ -59,7 +60,8 @@ const initialState = {
   playerHero: {
     "name": hero.name,
     "hit_points": hero.hit_points,
-    "level": hero.level
+    "level": hero.level,
+    "experience": hero.experience
   },
   computerHero: {
     "name": computer.name,
@@ -88,7 +90,11 @@ const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/fights/:fight" component={App} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   fight
 );

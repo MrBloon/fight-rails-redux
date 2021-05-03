@@ -7,3 +7,122 @@
 .active {
   color: red;
 }
+
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 100vh;
+  background: url(https://html5book.ru/wp-content/uploads/2015/05/background27.png);
+  overflow: hidden;
+}
+
+.card_info {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 300px 300px 80px;
+  grid-template-areas: "image" "text" "stats";
+
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+
+  // background: #fff;
+  background-color: rgba(#ffffff, 0.65);
+  border-radius: 18px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+
+  transition: 0.5s ease;
+  // border: solid red;
+}
+
+.card__image__demonist {
+  grid-area: image;
+  background: url(http://pngimg.com/uploads/homm/homm_PNG42.png);
+  background-size: cover;
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
+  margin-left: 25px;
+}
+
+.card__image__paladin {
+  grid-area: image;
+  background: url(http://pngimg.com/uploads/homm/homm_PNG3.png);
+  background-size: cover;
+  margin-left: 13px;
+}
+
+
+.card__text {
+  grid-area: text;
+  margin: 10px;
+  padding: 10px;
+  // background: linear-gradient(180deg, rgba(255, 255, 255, 0), #B3E5FC, #2196F3, #0D47A1);
+}
+
+.card__text .description {
+  color: #A50104;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card__text h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.card__text p {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.card__stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-row: 1fr;
+
+  background: linear-gradient(#0D47A1, #80D8FF);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card__stats .stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  color: #fff;
+}
+
+.card__stats .value {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.stat>.value>sup {
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.card__stats .type {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.card__stats .stat__border {
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.card__stats .stat__border__top {
+  border-top: 3px solid #fff;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 50px rgba(0,0,0,0.6);
+}

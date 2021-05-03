@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-import { resetState, updatePlayerHP, updateComputerHP, setFinalResult } from '../actions/index.js';
+import { resetState, updatePlayerHP, updateComputerHP, setFinalResult, updatePlayerExperience } from '../actions/index.js';
 
 
 class Result extends Component {
@@ -28,7 +28,13 @@ class Result extends Component {
     }
   }
 
-  handleClick = (event) => {
+  handleModalClick = (event) => {
+    const newExperience = this.props.playerHero.experience + 100;
+    this.props.updatePlayerExperience(newExperience, this.props.fightFromParams);
+
+  }
+
+  handleNextRoundClick = (event) => {
     this.props.resetState();
     document.querySelectorAll('.btn').forEach((btn) => {
       btn.removeAttribute("disabled");
@@ -80,16 +86,17 @@ class Result extends Component {
   }
 
   computeFinalResult = () => {
-    if (this.props.playerHero.hit_points <= 8) {
+    if (this.props.computerHero.hit_points <= 5 && this.props.playerHero.hit_points <= 9) {
       this.setState({showModal: true});
-      this.props.setFinalResult("Defeat")
-    } else if (this.props.computerHero.hit_points <= 8) {
+      this.props.setFinalResult("Tie");
+    } else if (this.props.computerHero.hit_points <= 5) {
       this.setState({showModal: true});
       this.props.setFinalResult("Victory")
+    } else if (this.props.playerHero.hit_points <= 5) {
+      this.setState({showModal: true});
+      this.props.setFinalResult("Defeat")
     }
   }
-
-
 
   render () {
     const modalStyle = {
@@ -108,9 +115,12 @@ class Result extends Component {
     if (this.props.finalResult === "Victory") {
       modalButtonClass += "success"
       modalText = "well done"
-    } else {
+    } else if (this.props.finalResult === "Defeat") {
       modalButtonClass += "danger"
       modalText = "looser !!"
+    } else {
+      modalButtonClass += "secondary"
+      modalText = "it's a tie"
     }
 
     return (
@@ -118,10 +128,10 @@ class Result extends Component {
           <Modal isOpen={this.state.showModal} style={modalStyle}>
             <h2>{this.props.finalResult}</h2>
             <p>{modalText}</p>
-            <a className={modalButtonClass} href="/" role="button">Continue</a>
+            <a className={modalButtonClass} href="/" role="button" onClick={this.handleModalClick}>Continue</a>
           </Modal>
           <div>round result : {this.props.roundResult} </div>
-          <a onClick={this.handleClick} className="btn btn-outline-primary" role="button">Next Round</a>
+          <a onClick={this.handleNextRoundClick} className="btn btn-outline-primary" role="button">Next Round</a>
           <a className="btn btn-outline-danger" href="/" role="button">Admit defeat</a>
         </div>
     );
@@ -143,7 +153,8 @@ function mapDispatchToProps(dispatch) {
     { resetState: resetState,
       updatePlayerHP: updatePlayerHP,
       updateComputerHP: updateComputerHP,
-      setFinalResult: setFinalResult
+      setFinalResult: setFinalResult,
+      updatePlayerExperience: updatePlayerExperience
     }, dispatch);
 }
 
