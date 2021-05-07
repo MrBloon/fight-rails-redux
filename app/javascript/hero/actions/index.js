@@ -10,8 +10,8 @@ export function setSelectedClass(classname) {
   };
 }
 
-export function createHero(name, classtype) {
-  const body = {name, classtype};
+export function createHero(name, hero_class) {
+  const body = {name, hero_class};
   const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const promise = fetch(BASE_URL, {
     method: 'POST',

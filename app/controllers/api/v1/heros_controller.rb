@@ -5,16 +5,16 @@ class Api::V1::HerosController < ApplicationController
   end
 
   def create
-    # @hero = Hero.create(hero_params)
-    # render json: @hero
-    @hero = Hero.create(name:params[:name], hero_class:params[:classtype], user: current_user)
+    @hero = Hero.new(hero_params)
+    @hero.user = current_user
+    @hero.save!
     render json: @hero
   end
 
   private
 
-  # def hero_params
-  #   params.require(:hero).permit(:name, :hero_class, :)
-  # end
+  def hero_params
+    params.require(:hero).permit(:name, :hero_class)
+  end
 
 end

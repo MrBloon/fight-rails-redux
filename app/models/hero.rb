@@ -4,6 +4,5 @@ class Hero < ApplicationRecord
   belongs_to :user
   validates :name, presence: true, uniqueness: true
   validates :hero_class, presence: true
-  validates :class, presence: true
-  validates :hit_points, presence: true
+  validates :hero_class, presence: true
 end

@@ -1,0 +1,5 @@
+<div id="equipments" data-gold="<%= @gold.to_json %>" data-equipments="<%= @equipments.to_json %>"></div>
+
+<% content_for :after_js do %>
+  <%= javascript_pack_tag "equipments" %>
+<% end %>

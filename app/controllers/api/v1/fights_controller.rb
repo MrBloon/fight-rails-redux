@@ -2,11 +2,6 @@ class Api::V1::FightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :update]
   before_action :set_fight, only: [:show, :update]
 
-  # def index
-  #   @heros = Hero.all
-  #   render json: @heros
-  # end
-
   def new
     @fight = Fight.new
   end
