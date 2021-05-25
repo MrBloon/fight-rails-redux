@@ -6,18 +6,22 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 import Modal from 'react-modal';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 // internal modules
-import App from './components/app';
+import Hall from './containers/hall/hall';
+import Levels from './containers//levels/levels';
+import Fight from './components/fight';
 
 
 // State and reducers
+import playerHeroReducer from './reducers/player_hero_reducer';
+import selectedEquipmentsReducer from './reducers/selected_equipments_reducer';
+import computerHeroReducer from './reducers/computer_hero_reducer';
 import specialsReducer from './reducers/specials_reducer';
 import selectedSpecialReducer from './reducers/selected_special_reducer';
 import playerActionReducer from './reducers/player_action_reducer';
-import playerHeroReducer from './reducers/player_hero_reducer';
-import computerHeroReducer from './reducers/computer_hero_reducer';
 import computerActionReducer from './reducers/computer_action_reducer';
 import roundResultReducer from './reducers/round_result_reducer';
 import finalResultReducer from './reducers/final_result_reducer';
@@ -26,13 +30,20 @@ const identityReducer = (state = null) => state;
 
 
 const fight = document.getElementById('fight');
-const hero = JSON.parse(fight.dataset.hero);
-const computer = JSON.parse(fight.dataset.foe);
+const playerHeros = JSON.parse(fight.dataset.heros);
+const equipments = JSON.parse(fight.dataset.equipments);
+const computerHeros = JSON.parse(fight.dataset.foes);
 
 Modal.setAppElement(fight);
 
 
 const initialState = {
+  playerHero: null,
+  playerHeroList: playerHeros,
+  selectedEquipments: [],
+  equipmentList: equipments,
+  computerHero: null,
+  computerHeroList: computerHeros,
   actions: ["Melee Attack", "Ranged Attack", "Magic Attack"],
   specials: [
     {
@@ -57,28 +68,21 @@ const initialState = {
   ],
   selectedSpecial: null,
   playerAction: null,
-  playerHero: {
-    "name": hero.name,
-    "hit_points": hero.hit_points,
-    "level": hero.level,
-    "experience": hero.experience
-  },
-  computerHero: {
-    "name": computer.name,
-    "hit_points": computer.hit_points,
-    "level": computer.level
-  },
   computerAction: null,
   roundResult: null,
   finalResult: null
 }
 const reducers = combineReducers({
+  playerHero: playerHeroReducer,
+  playerHeroList: identityReducer,
+  selectedEquipments: selectedEquipmentsReducer,
+  equipmentList: identityReducer,
+  computerHero: computerHeroReducer,
+  computerHeroList: identityReducer,
   actions: identityReducer,
   specials: specialsReducer,
   selectedSpecial: selectedSpecialReducer,
   playerAction: playerActionReducer,
-  playerHero: playerHeroReducer,
-  computerHero: computerHeroReducer,
   computerAction: computerActionReducer,
   roundResult: roundResultReducer,
   finalResult: finalResultReducer
@@ -90,11 +94,13 @@ const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
-    <BrowserRouter>
+    <Router history={createBrowserHistory.history}>
       <Switch>
-        <Route path="/fights/:fight" component={App} />
+        <Route path="/fights/hall" component={Hall} />
+        <Route path="/fights/levels" component={Levels} />
+        <Route path="/fights/:fight" component={Fight} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   fight
 );

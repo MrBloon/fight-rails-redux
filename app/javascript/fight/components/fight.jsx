@@ -6,9 +6,9 @@ import ComputerCard from '../containers/card_computer'
 import ActionList from '../containers/action_list'
 
 
-const App = (props) => {
+const Fight = (props) => {
   return (
-    <div className="app">
+    <div className="fight-show">
       <Result fightFromParams={props.match.params.fight}/>
       <PlayerCard />
       <ComputerCard />
@@ -17,4 +17,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default Fight;

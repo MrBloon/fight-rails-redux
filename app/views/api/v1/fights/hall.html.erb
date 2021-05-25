@@ -1,0 +1,9 @@
+<div id="fight"
+     data-heros="<%= @player_heros.to_json %>"
+     data-equipments="<%= @equipments.to_json %>"
+     data-foes="<%= @foes.to_json %>">
+</div>
+
+<% content_for :after_js do %>
+  <%= javascript_pack_tag "fight" %>
+<% end %>

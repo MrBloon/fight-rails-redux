@@ -6,7 +6,7 @@ import Equipment from '../containers/equipment'
 
 const App = (props) => {
   return (
-    <div className="app">
+    <div className="equipments">
       <EquipmentList />
       <Equipment />
     </div>

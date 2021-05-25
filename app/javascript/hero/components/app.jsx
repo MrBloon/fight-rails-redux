@@ -5,7 +5,7 @@ import Hero from '../containers/hero'
 
 const App = (props) => {
   return (
-    <div className="app">
+    <div className="hero">
       <ClassList />
       <Hero />
     </div>

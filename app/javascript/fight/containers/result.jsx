@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-import { resetState, updatePlayerHP, updateComputerHP, setFinalResult, updatePlayerExperience } from '../actions/index.js';
+import { resetState,
+         updatePlayerHP,
+         updateComputerHP,
+         setFinalResult,
+         updatePlayerExperience
+} from '../actions/index.js';
 
 
 class Result extends Component {
@@ -31,7 +36,6 @@ class Result extends Component {
   handleModalClick = (event) => {
     const newExperience = this.props.playerHero.experience + 100;
     this.props.updatePlayerExperience(newExperience, this.props.fightFromParams);
-
   }
 
   handleNextRoundClick = (event) => {

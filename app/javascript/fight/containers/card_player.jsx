@@ -21,4 +21,5 @@ function mapStateToProps(state) {
     playerHero: state.playerHero
   };
 }
+
 export default connect(mapStateToProps, null)(PlayerCard);

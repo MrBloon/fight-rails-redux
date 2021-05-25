@@ -9,6 +9,7 @@ class Api::V1::EquipmentsController < ApplicationController
   end
 
   def create
+    byebug
     @equipment = Equipment.new(equipment_params)
     @equipment.user = current_user
     @equipment.save!

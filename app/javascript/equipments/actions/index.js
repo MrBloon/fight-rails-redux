@@ -28,7 +28,6 @@ export function increaseEquipmentQuantity(equipment) {
     credentials: 'same-origin',
     body: JSON.stringify(body)
   }).then(r => r.json());
-
   return {
     type: INCREASE_EQUIPMENT_QUANTITY,
     payload: promise
