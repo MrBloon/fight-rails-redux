@@ -4,7 +4,8 @@ export const SET_PLAYER_HERO = 'SET_PLAYER_HERO';
 export const SET_COMPUTER_HERO = 'SET_COMPUTER_HERO';
 export const CREATE_FIGHT = 'CREATE_FIGHT';
 export const SET_PLAYER_ACTION = 'SET_PLAYER_ACTION';
-export const SET_EQUIPMENT_LIST = 'SET_EQUIPMENT_LIST';
+export const SET_SELECTED_EQUIPMENT_LIST = 'SET_SELECTED_EQUIPMENT_LIST';
+export const UPDATE_EQUIPMENT_LIST = 'UPDATE_EQUIPMENT_LIST';
 export const SET_COMPUTER_ACTION = 'SET_COMPUTER_ACTION';
 export const SET_ROUND_RESULT = 'SET_ROUND_RESULT';
 export const SET_FINAL_RESULT = 'SET_FINAL_RESULT';
@@ -29,9 +30,16 @@ export function setComputerHero(computerHero) {
   };
 }
 
-export function setEquipmentList(equipment) {
+export function setSelectedEquipmentList(equipment) {
   return {
-    type: SET_EQUIPMENT_LIST,
+    type: SET_SELECTED_EQUIPMENT_LIST,
+    payload: equipment
+  };
+}
+
+export function updateEquipmentList(equipment) {
+  return {
+    type: UPDATE_EQUIPMENT_LIST,
     payload: equipment
   };
 }

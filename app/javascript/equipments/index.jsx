@@ -25,62 +25,72 @@ const initialState = {
       "name": "Sword",
       "quantity": 0,
       "price": 100,
-      "description": "+1 melee attack"
+      "description": "+1 melee attack",
+      "equipment_type": "weapon"
     },
     {
       "name": "Shield",
       "quantity": 0,
       "price": 100,
-      "description": "+1 hit points"
+      "description": "+1 hit points",
+      "equipment_type": "shield"
     },
     {
       "name": "Armour",
       "quantity": 0,
       "price": 200,
-      "description": "+2 hit points"
+      "description": "+2 hit points",
+      "equipment_type": "body"
     },
     {
       "name": "War Hammer",
       "quantity": 0,
       "price": 200,
-      "description": "+2 melee attack. You can't use other one handed item"
+      "description": "+2 melee attack. You can't use other one handed item",
+      "equipment_type": "weapon"
     },
     {
       "name": "Helmet",
       "quantity": 0,
       "price": 50,
-      "description": "+1 hit points"
+      "description": "+1 hit points",
+      "equipment_type": "head"
     },
     {
       "name": "Bow",
       "quantity": 0,
       "price": 100,
-      "description": "+1 ranged attack"
+      "description": "+1 ranged attack",
+      "equipment_type": "weapon"
     },
     {
       "name": "Life Potion",
       "quantity": 0,
       "price": 200,
-      "description": "Regenerate 2 hit points"
+      "description": "Regenerate 2 hit points",
+      "equipment_type": "item"
     },
     {
       "name": "Magic Staff",
       "quantity": 0,
       "price": 200,
-      "description": "+2 magic attack. You can't use other one handed item"
+      "description": "+2 magic attack. You can't use other one handed item",
+      "equipment_type": "weapon"
     },
     {
       "name": "Robe",
       "quantity": 0,
       "price": 200,
-      "description": "+1 hit points"
+      "description": "+1 hit points",
+      "equipment_type": "body"
     }
   ],
   selectedEquipment: {
     "name": "Sword",
     "quantity": 0,
     "price": 100,
-    "description": "+1 melee attack"
+    "description": "+1 melee attack",
+    "equipment_type": "weapon"
   },
   gold: gold
 }

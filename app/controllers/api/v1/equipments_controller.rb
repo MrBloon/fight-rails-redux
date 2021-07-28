@@ -1,7 +1,7 @@
 class Api::V1::EquipmentsController < ApplicationController
   def index
     @gold = current_user.gold
-    @equipments = Equipment.all
+    @equipments = current_user.equipments.all
     respond_to do |format|
       format.html
       format.json { render json: [@equipments, @gold] }
@@ -9,7 +9,6 @@ class Api::V1::EquipmentsController < ApplicationController
   end
 
   def create
-    byebug
     @equipment = Equipment.new(equipment_params)
     @equipment.user = current_user
     @equipment.save!
@@ -25,6 +24,6 @@ class Api::V1::EquipmentsController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :user, :quantity)
+    params.require(:equipment).permit(:name, :description, :user, :quantity, :equipment_type)
   end
 end

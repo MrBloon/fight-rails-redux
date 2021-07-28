@@ -18,6 +18,7 @@ import Fight from './components/fight';
 // State and reducers
 import playerHeroReducer from './reducers/player_hero_reducer';
 import selectedEquipmentsReducer from './reducers/selected_equipments_reducer';
+import equipmentListReducer from './reducers/equipment_list_reducer';
 import computerHeroReducer from './reducers/computer_hero_reducer';
 import specialsReducer from './reducers/specials_reducer';
 import selectedSpecialReducer from './reducers/selected_special_reducer';
@@ -76,7 +77,7 @@ const reducers = combineReducers({
   playerHero: playerHeroReducer,
   playerHeroList: identityReducer,
   selectedEquipments: selectedEquipmentsReducer,
-  equipmentList: identityReducer,
+  equipmentList: equipmentListReducer,
   computerHero: computerHeroReducer,
   computerHeroList: identityReducer,
   actions: identityReducer,

@@ -15,7 +15,8 @@ export function increaseEquipmentQuantity(equipment) {
   const body = {
     "name": equipment.name,
     "quantity": equipment.quantity,
-    "description": equipment.description
+    "description": equipment.description,
+    "equipment_type": equipment.equipment_type
   };
 
   const promise = fetch(url, {

@@ -29,6 +29,9 @@ class Equipment extends Component {
           <li>
             {this.props.selectedEquipment.price}
           </li>
+          <li>
+            {this.props.selectedEquipment.equipment_type}
+          </li>
         </ul>
         <a onClick={this.handleClick} className="btn btn-outline-primary" role="button">Buy Equipment</a>
       </div>
